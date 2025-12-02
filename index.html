@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockchain Simulator - Final UI</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Navbar Fixed -->
+    <nav class="navbar glass-nav">
+      <div class="nav-brand">Blockchain Simulator</div>
+
+      <div class="hamburger" id="hamburger-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="nav-links" id="nav-links">
+        <button id="tab-home" class="active">Home</button>
+        <button id="tab-about">About Me</button>
+        <button id="tab-hash">Hash</button>
+        <button id="tab-block">Block</button>
+        <button id="tab-chain">BlockChain</button>
+        <button id="tab-ecc">ECC</button>
+        <button id="tab-consensus">Konsensus</button>
+      </div>
+    </nav>
+
+    <div class="nav-spacer"></div>
+
+    <!-- PAGE: HOME -->
+    <div id="page-home" class="page active custom-home">
+      <div class="home-container">
+        <!-- Gambar Blockchain Background (Baru) -->
+        <img src="blockchain.png" class="hero-bg-img" alt="Blockchain Decoration" />
+
+        <div class="hero-section">
+          <h1 class="hero-title">
+            SELAMAT DATANG DI WEBSITE <br />
+            BELAJAR BLOCKCHAIN
+          </h1>
+
+          <div class="hero-desc-box">
+            <p>WEBSITE INI ADALAH SIMULATOR INTERAKTIF UNTUK MEMPELAJARI KONSEP-KONSEP DASAR TEKNOLOGI BLOCKCHAIN. ANDA DAPAT MENJELAJAHI BERBAGAI ASPEK BLOCKCHAIN MELALUI TAB DI ATAS:</p>
+          </div>
+
+          <div class="clock-widget-container">
+            <div class="time-display">
+              <div class="time-box" id="time-hh">00</div>
+              <div class="colon">:</div>
+              <div class="time-box" id="time-mm">00</div>
+              <div class="colon">:</div>
+              <div class="time-box" id="time-ss">00</div>
+            </div>
+            <div class="date-display" id="date-text">Minggu, 30 November 2025</div>
+          </div>
+        </div>
+
+        <!-- Spacer agar layout seimbang dengan gambar di kanan -->
+        <div class="hero-spacer"></div>
+      </div>
+
+      <!-- FEATURE GRID (Hover Effect) -->
+      <div class="feature-wrapper">
+        <div class="feature-grid">
+          <!-- Card 1: HASH -->
+          <div class="feature-card card-hash">
+            <div class="card-bg-icon"></div>
+            <h3>Hash</h3>
+            <p class="summary">Konsep dasar fingerprint data digital.</p>
+            <!-- Detail muncul saat hover -->
+            <div class="card-details">
+              <p>Hash adalah fungsi satu arah yang mengubah input data menjadi string karakter dengan panjang tetap. Di sini kita menggunakan SHA-256 untuk melihat bagaimana perubahan kecil pada data mengubah output secara drastis.</p>
+              <button class="try-btn" onclick="goToPage('hash')">Coba Hash</button>
+            </div>
+          </div>
+
+          <!-- Card 2: BLOCK -->
+          <div class="feature-card card-block">
+            <div class="card-bg-icon"></div>
+            <h3>Block</h3>
+            <p class="summary">Simulasi mining & Proof of Work.</p>
+            <div class="card-details">
+              <p>Block adalah wadah data dalam blockchain. Anda akan belajar tentang Nonce dan tingkat kesulitan (Difficulty) dalam proses mining untuk menemukan hash yang valid (dimulai dengan 0000).</p>
+              <button class="try-btn" onclick="goToPage('block')">Coba Block</button>
+            </div>
+          </div>
+
+          <!-- Card 3: CHAIN -->
+          <div class="feature-card card-chain">
+            <div class="card-bg-icon"></div>
+            <h3>Blockchain</h3>
+            <p class="summary">Rantai blok yang saling terikat.</p>
+            <div class="card-details">
+              <p>Melihat bagaimana blok-blok terhubung satu sama lain menggunakan "Previous Hash". Jika satu blok diubah datanya, semua blok setelahnya akan menjadi tidak valid (rusak).</p>
+              <button class="try-btn" onclick="goToPage('chain')">Coba BlockChain</button>
+            </div>
+          </div>
+
+          <!-- Card 4: ECC -->
+          <div class="feature-card card-ecc">
+            <div class="card-bg-icon"></div>
+            <h3>ECC Signature</h3>
+            <p class="summary">Tanda tangan digital & Kunci privat.</p>
+            <div class="card-details">
+              <p>Elliptic Curve Cryptography (ECC) digunakan untuk membuat pasangan kunci Public & Private. Ini memungkinkan penandatanganan transaksi yang aman dan verifikasi kepemilikan tanpa membocorkan kunci rahasia.</p>
+              <button class="try-btn" onclick="goToPage('ecc')">Coba ECC</button>
+            </div>
+          </div>
+
+          <!-- Card 5: CONSENSUS -->
+          <div class="feature-card card-consensus">
+            <div class="card-bg-icon"></div>
+            <h3>Konsensus</h3>
+            <p class="summary">Kesepakatan data antar user.</p>
+            <div class="card-details">
+              <p>Simulasi jaringan peer-to-peer terdistribusi di mana User A, B, dan C memiliki salinan database sendiri. Pelajari bagaimana mereka mencapai kesepakatan (konsensus) atas transaksi yang valid.</p>
+              <button class="try-btn" onclick="goToPage('consensus')">Coba Konsensus</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="footer-note text-white">Gunakan tab di atas atau tombol "Coba" untuk mulai belajar.</p>
+    </div>
+
+    <!-- PAGE: ABOUT -->
+    <div id="page-about" class="page-special">
+      <div class="final-cv-wrapper">
+        <div class="final-white-card">
+          <div class="final-cv-grid">
+            <div class="final-left-sidebar">
+              <div class="final-orange-bg"></div>
+              <div class="final-photo-box">
+                <img src="Dayess_1.png" onerror="this.src='https://via.placeholder.com/280x380?text=Foto+Profil'" alt="Foto Profil" />
+              </div>
+            </div>
+
+            <div class="final-right-content">
+              <div class="final-header">
+                <h1>Muhammad <span class="text-highlight">Dias</span> Al Izzat</h1>
+                <div class="final-underline"></div>
+              </div>
+
+              <div class="final-body-split">
+                <div class="sub-col-info">
+                  <h2 class="final-sec-title">Biodata</h2>
+                  <div class="final-bio-list">
+                    <div class="bio-row"><span class="bio-label">Nama</span><span class="bio-val">: Muhammad Dias Al Izzat</span></div>
+                    <div class="bio-row"><span class="bio-label">Tempat, Tgl lahir</span><span class="bio-val">: Gresik, 27 Agustus 2005</span></div>
+                    <div class="bio-row"><span class="bio-label">Agama</span><span class="bio-val">: Islam</span></div>
+                    <div class="bio-row"><span class="bio-label">Status</span><span class="bio-val">: Mahasiswa</span></div>
+                    <div class="bio-row"><span class="bio-label">Alamat</span><span class="bio-val">: Sekargadung, Dukun, Gresik</span></div>
+                  </div>
+
+                  <h2 class="final-sec-title mt-40">My Skills</h2>
+                  <div class="final-skill-list">
+                    <div class="f-skill-item">
+                      <span class="f-skill-name">Graphic Design</span>
+                      <div class="f-skill-track"><div class="f-skill-fill" style="width: 90%"></div></div>
+                    </div>
+                    <div class="f-skill-item">
+                      <span class="f-skill-name">Website Design</span>
+                      <div class="f-skill-track"><div class="f-skill-fill" style="width: 70%"></div></div>
+                    </div>
+                    <div class="f-skill-item">
+                      <span class="f-skill-name">Motion Graphics</span>
+                      <div class="f-skill-track"><div class="f-skill-fill" style="width: 80%"></div></div>
+                    </div>
+                    <div class="f-skill-item">
+                      <span class="f-skill-name">Videograph</span>
+                      <div class="f-skill-track"><div class="f-skill-fill" style="width: 85%"></div></div>
+                    </div>
+                  </div>
+
+                  <h2 class="final-sec-title mt-40">My Location</h2>
+                  <div class="final-map-box">
+                    <iframe src="https://www.google.com/maps?q=-7.003111,112.471917&hl=id&z=15&output=embed" width="100%" height="100%" frameborder="0" style="border: 0" allowfullscreen=""> </iframe>
+                  </div>
+                  <div class="final-map-text">📍 7°00'11.2"S 112°28'18.9"E</div>
+                </div>
+
+                <div class="sub-col-exp">
+                  <h2 class="final-sec-title">Experience</h2>
+                  <div class="f-exp-item">
+                    <div class="f-exp-head">ELVIRO (EEPIS Electric Vehicle)</div>
+                    <div class="f-exp-role">Non Technical (Graphic Designer)</div>
+                    <p class="f-exp-desc">
+                      Menjadi salah satu bagian di tim ELVIRO pada divisi non technical dengan detail project yang dikerjakan adalah mengelola media sosial, graphic designer, editor video, videographer dan photographer.
+                    </p>
+                  </div>
+                  <div class="f-exp-item">
+                    <div class="f-exp-head">MET Media Management Team (3MT)</div>
+                    <div class="f-exp-role">Graphic Designer</div>
+                    <p class="f-exp-desc">Menjadi bagian dari 3MT pada divisi Graphic Designer yang dimana 3MT adalah suatu Tim yang dibentuk Dosen dan Mahasiswa TRM untuk mengelola media sosial, website, dan event prodi TRM.</p>
+                  </div>
+                  <div class="f-exp-item">
+                    <div class="f-exp-head">TRM Expo, Immersive Fiesta</div>
+                    <div class="f-exp-role">Broadcast</div>
+                    <p class="f-exp-desc">Berpartisipasi pada event prodi TRM Expo dan Immersive fiesta pada divisi Broadcasting, dan pada saat TRM Expo berkesempatan untuk membuat motion graphic untuk waiting screen dan lower third.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE: HASH -->
+    <div id="page-hash" class="page glass-container">
+      <div class="content-wrapper">
+        <h2 class="section-title">Hash Generator (SHA-256)</h2>
+        <div class="glass-card">
+          <label for="hash-input">Text Input:</label>
+          <textarea id="hash-input" rows="4" placeholder="Ketik sesuatu di sini..."></textarea>
+          <label>SHA-256 Hash:</label>
+          <div id="hash-output" class="output"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE: BLOCK -->
+    <div id="page-block" class="page glass-container">
+      <div class="content-wrapper">
+        <h2 class="section-title">Single Block Simulation</h2>
+        <div class="glass-card">
+          <div class="form-grid">
+            <div><label for="block-number"># Block Number:</label><input id="block-number" type="number" min="0" value="1" /></div>
+            <div><label for="block-nonce">Nonce:</label><input id="block-nonce" type="text" maxlength="9" value="0" /></div>
+          </div>
+          <label for="block-data">Data:</label><textarea id="block-data" rows="4" placeholder="Masukkan data transaksi..."></textarea> <label for="block-timestamp">Timestamp:</label
+          ><input id="block-timestamp" type="text" readonly class="readonly-input" /> <label>Hash:</label>
+          <div id="block-hash" class="output"></div>
+          <div class="control-panel">
+            <button id="btn-mine" class="mine-btn">Mine Block</button>
+            <div class="speed-box">
+              <label for="speed-control">Kecepatan:</label>
+              <select id="speed-control">
+                <option value="1">Normal</option>
+                <option value="10">10x Cepat</option>
+                <option value="50">50x Cepat</option>
+              </select>
+            </div>
+          </div>
+          <div id="mining-status" class="status-bar"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE: CHAIN -->
+    <div id="page-chain" class="page glass-container">
+      <div class="content-wrapper">
+        <h2 class="section-title">Blockchain</h2>
+        <div class="controls-top"><button id="btn-add-block" class="action-btn">+ Tambah Block Baru</button></div>
+        <div id="blockchain" class="chain-scroll-container"></div>
+      </div>
+    </div>
+
+    <!-- PAGE: ECC -->
+    <div id="page-ecc" class="page glass-container">
+      <div class="content-wrapper">
+        <h2 class="section-title">ECC Digital Signature</h2>
+        <div class="glass-card">
+          <button id="btn-generate-key" class="action-btn">Generate Key Pair Baru</button>
+          <p class="info-text">Public Key dan Private Key dapat diedit untuk percobaan validasi.</p>
+          <div class="form-grid">
+            <div><label>Public Key:</label><textarea id="ecc-public" rows="3" class="code-font"></textarea></div>
+            <div><label>Private Key:</label><textarea id="ecc-private" rows="3" class="code-font"></textarea></div>
+          </div>
+        </div>
+        <div class="glass-card mt-20">
+          <label>Pesan yang akan ditandatangani:</label><textarea id="ecc-message" rows="3" placeholder="Tulis pesan rahasia..."></textarea>
+          <button id="btn-sign" class="action-btn">Sign Message</button>
+          <label>Hasil Signature (DER hex):</label><textarea id="ecc-signature" rows="3" readonly class="code-font readonly-input"></textarea>
+        </div>
+        <div class="glass-card mt-20">
+          <button id="btn-verify" class="verify-btn">Verify Signature</button>
+          <div id="ecc-verify-result" class="output center-text"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE: CONSENSUS -->
+    <div id="page-consensus" class="page glass-container">
+      <div class="content-wrapper">
+        <h2 class="section-title">Simulasi Konsensus Terdistribusi</h2>
+
+        <div class="wallets-grid">
+          <div class="wallet-card" data-user="A">
+            <div class="wallet-header">User A</div>
+            <div class="wallet-body">
+              <div class="saldo">Saldo: <span id="saldo-A">100</span> COIN</div>
+              <div class="trx-form">
+                <select id="receiver-A">
+                  <option value="B">Ke User B</option>
+                  <option value="C">Ke User C</option>
+                </select>
+                <input id="amount-A" type="number" min="1" value="10" placeholder="Jml" />
+                <button id="send-A">Kirim</button>
+              </div>
+            </div>
+          </div>
+          <div class="wallet-card" data-user="B">
+            <div class="wallet-header">User B</div>
+            <div class="wallet-body">
+              <div class="saldo">Saldo: <span id="saldo-B">100</span> COIN</div>
+              <div class="trx-form">
+                <select id="receiver-B">
+                  <option value="A">Ke User A</option>
+                  <option value="C">Ke User C</option>
+                </select>
+                <input id="amount-B" type="number" min="1" value="10" placeholder="Jml" />
+                <button id="send-B">Kirim</button>
+              </div>
+            </div>
+          </div>
+          <div class="wallet-card" data-user="C">
+            <div class="wallet-header">User C</div>
+            <div class="wallet-body">
+              <div class="saldo">Saldo: <span id="saldo-C">100</span> COIN</div>
+              <div class="trx-form">
+                <select id="receiver-C">
+                  <option value="A">Ke User A</option>
+                  <option value="B">Ke User B</option>
+                </select>
+                <input id="amount-C" type="number" min="1" value="10" placeholder="Jml" />
+                <button id="send-C">Kirim</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card mt-mempool">
+          <label>Mempool (Pending Transactions):</label>
+          <textarea id="mempool" rows="3" placeholder="Transaksi yang menunggu konfirmasi..."></textarea>
+          <div class="action-bar">
+            <button id="btn-mine-all" class="mine-btn">Mine Transaksi</button>
+            <button id="btn-verify-consensus" class="verify-btn">Verify Data</button>
+            <button id="btn-consensus" class="consensus-btn">Jalankan Konsensus</button>
+          </div>
+        </div>
+
+        <h3 class="subsection-title text-white">Ledger / Blockchain Tiap User</h3>
+        <div id="chains" class="ledger-container">
+          <div class="ledger-column">
+            <h4>Database User A</h4>
+            <div id="chain-A" class="chain-col"></div>
+          </div>
+          <div class="ledger-column">
+            <h4>Database User B</h4>
+            <div id="chain-B" class="chain-col"></div>
+          </div>
+          <div class="ledger-column">
+            <h4>Database User C</h4>
+            <div id="chain-C" class="chain-col"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/elliptic/6.5.4/elliptic.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

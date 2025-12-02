@@ -1,0 +1,15 @@
+# --- Folder yang DIABAIKAN (Wajib Sama Persis Tulisannya) ---
+New folder/
+New folder
+
+# --- File Sistem (Sampah) ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Editor Settings ---
+.vscode/
+.idea/
+
+# --- Logs ---
+*.log
